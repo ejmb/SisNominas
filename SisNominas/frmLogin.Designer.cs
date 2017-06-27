@@ -127,7 +127,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::SisNominas.Properties.Resources.clockLogin;
+            this.pictureBox1.Image = global::SisNominas.Properties.Resources.loginImg;
             this.pictureBox1.Location = new System.Drawing.Point(13, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);

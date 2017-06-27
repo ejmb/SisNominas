@@ -14,9 +14,10 @@ namespace SisNominas
         [STAThread]
         static void Main()
         {
+            frmSplash.ShowSplash();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());//a
+            Application.Run(new frmLogin());
         }
     }
 }

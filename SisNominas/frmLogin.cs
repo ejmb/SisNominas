@@ -6,8 +6,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SisNominas_Clases;
 
 namespace SisNominas
 {
@@ -16,6 +18,19 @@ namespace SisNominas
         public frmLogin()
         {
             InitializeComponent();
+
+            ConexionBD cx = new ConexionBD();
+            if (cx.ProbarConexion())
+            {
+                Thread.Sleep(5000);
+                frmSplash.CloseSplash();
+            }
+            else
+            {
+                MessageBox.Show("NO SE PUEDE CONECTAR A LA BD");
+                frmSplash.CloseSplash();
+            }
+
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)

@@ -20,10 +20,7 @@ namespace SisNominas
 
         private void btnConsulta_Click(object sender, EventArgs e)
         {
-            frmConsulta frm = new frmConsulta();
-            frm.listaCargos = Cargo.ObtenerCargos();
-            frm.Show();
-            Hide();
+            
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

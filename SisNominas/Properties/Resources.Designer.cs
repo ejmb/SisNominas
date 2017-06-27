@@ -61,12 +61,12 @@ namespace SisNominas.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon clockIcon {
+        internal static System.Drawing.Bitmap clockIcon {
             get {
                 object obj = ResourceManager.GetObject("clockIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -76,6 +76,16 @@ namespace SisNominas.Properties {
         internal static System.Drawing.Bitmap clockLogin {
             get {
                 object obj = ResourceManager.GetObject("clockLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_clock {
+            get {
+                object obj = ResourceManager.GetObject("icon_clock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
