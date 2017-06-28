@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtNroDocumento = new System.Windows.Forms.TextBox();
+            this.txtSalarioEntrante = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,9 +43,11 @@
             this.dtpFechaCambio = new System.Windows.Forms.DateTimePicker();
             this.cboCargoSaliente = new System.Windows.Forms.ComboBox();
             this.cboCargoEntrante = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvEmpleados = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtNroDocumento = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregar
@@ -60,11 +62,12 @@
             this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 31);
+            this.label1.Location = new System.Drawing.Point(281, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 7;
@@ -94,12 +97,12 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Nro. Documento";
             // 
-            // txtNroDocumento
+            // txtSalarioEntrante
             // 
-            this.txtNroDocumento.Location = new System.Drawing.Point(104, 78);
-            this.txtNroDocumento.Name = "txtNroDocumento";
-            this.txtNroDocumento.Size = new System.Drawing.Size(137, 20);
-            this.txtNroDocumento.TabIndex = 3;
+            this.txtSalarioEntrante.Location = new System.Drawing.Point(362, 90);
+            this.txtSalarioEntrante.Name = "txtSalarioEntrante";
+            this.txtSalarioEntrante.Size = new System.Drawing.Size(123, 20);
+            this.txtSalarioEntrante.TabIndex = 3;
             // 
             // label4
             // 
@@ -136,7 +139,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 57);
+            this.label2.Location = new System.Drawing.Point(281, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 7;
@@ -145,7 +148,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(282, 84);
+            this.label6.Location = new System.Drawing.Point(281, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 7;
@@ -154,7 +157,7 @@
             // dtpFechaCambio
             // 
             this.dtpFechaCambio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaCambio.Location = new System.Drawing.Point(363, 27);
+            this.dtpFechaCambio.Location = new System.Drawing.Point(362, 8);
             this.dtpFechaCambio.Name = "dtpFechaCambio";
             this.dtpFechaCambio.Size = new System.Drawing.Size(123, 20);
             this.dtpFechaCambio.TabIndex = 4;
@@ -162,7 +165,7 @@
             // cboCargoSaliente
             // 
             this.cboCargoSaliente.FormattingEnabled = true;
-            this.cboCargoSaliente.Location = new System.Drawing.Point(365, 54);
+            this.cboCargoSaliente.Location = new System.Drawing.Point(364, 35);
             this.cboCargoSaliente.Name = "cboCargoSaliente";
             this.cboCargoSaliente.Size = new System.Drawing.Size(121, 21);
             this.cboCargoSaliente.TabIndex = 5;
@@ -170,30 +173,49 @@
             // cboCargoEntrante
             // 
             this.cboCargoEntrante.FormattingEnabled = true;
-            this.cboCargoEntrante.Location = new System.Drawing.Point(365, 81);
+            this.cboCargoEntrante.Location = new System.Drawing.Point(364, 62);
             this.cboCargoEntrante.Name = "cboCargoEntrante";
             this.cboCargoEntrante.Size = new System.Drawing.Size(121, 21);
             this.cboCargoEntrante.TabIndex = 6;
             // 
-            // dataGridView1
+            // dgvEmpleados
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 131);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(473, 150);
-            this.dataGridView1.TabIndex = 8;
+            this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleados.Location = new System.Drawing.Point(13, 131);
+            this.dgvEmpleados.Name = "dgvEmpleados";
+            this.dgvEmpleados.Size = new System.Drawing.Size(473, 150);
+            this.dgvEmpleados.TabIndex = 8;
+            this.dgvEmpleados.SelectionChanged += new System.EventHandler(this.dgvEmpleados_SelectionChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(281, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Salario Entrante";
+            // 
+            // txtNroDocumento
+            // 
+            this.txtNroDocumento.Location = new System.Drawing.Point(104, 78);
+            this.txtNroDocumento.Name = "txtNroDocumento";
+            this.txtNroDocumento.Size = new System.Drawing.Size(137, 20);
+            this.txtNroDocumento.TabIndex = 3;
             // 
             // frmCargoAscenso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 336);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvEmpleados);
+            this.Controls.Add(this.txtSalarioEntrante);
             this.Controls.Add(this.cboCargoEntrante);
             this.Controls.Add(this.cboCargoSaliente);
             this.Controls.Add(this.dtpFechaCambio);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -203,9 +225,10 @@
             this.Name = "frmCargoAscenso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Mantenimiento Cargo/Ascenso";
+            this.Load += new System.EventHandler(this.frmCargoAscenso_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,7 +239,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNroDocumento;
+        private System.Windows.Forms.TextBox txtSalarioEntrante;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.Label label3;
@@ -226,6 +249,8 @@
         private System.Windows.Forms.DateTimePicker dtpFechaCambio;
         private System.Windows.Forms.ComboBox cboCargoSaliente;
         private System.Windows.Forms.ComboBox cboCargoEntrante;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvEmpleados;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtNroDocumento;
     }
 }

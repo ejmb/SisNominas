@@ -115,7 +115,7 @@ namespace SisNominas
                 cboTipoDocumento.SelectedIndex = cboTipoDocumento.FindStringExact(dgvEmpleado.SelectedRows[0].Cells[5].Value.ToString());
                 txtNroCelular.Text = dgvEmpleado.SelectedRows[0].Cells[6].Value.ToString();
                 dtpFechaIngreso.Value = (DateTime)dgvEmpleado.SelectedRows[0].Cells[7].Value;
-                cboCargoActual.SelectedIndex = cboCargoActual.FindStringExact(Cargo.ObtenerDescripcionCargo((int)dgvEmpleado.SelectedRows[0].Cells[8].Value));
+                cboCargoActual.SelectedIndex = cboCargoActual.FindStringExact(dgvEmpleado.SelectedRows[0].Cells[14].Value.ToString());
                 txtVacaciones.Text = dgvEmpleado.SelectedRows[0].Cells[9].Value.ToString();
                 txtDiasAFavor.Text = dgvEmpleado.SelectedRows[0].Cells[10].Value.ToString();
                 cboEstado.SelectedIndex = cboEstado.FindStringExact(dgvEmpleado.SelectedRows[0].Cells[11].Value.ToString());

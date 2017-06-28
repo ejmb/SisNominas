@@ -211,14 +211,14 @@ namespace Clases
                     }
                     catch (SqlException sqle)
                     {
-                        throw sqle;
+                        //throw sqle;
                         return false;
                     }
                 }
             }
             catch (Exception ex2)
             {
-                throw ex2;
+                //throw ex2;
                 return false;
             }
         }
@@ -231,7 +231,7 @@ namespace Clases
                 {
                     con.Open();
 
-                    string textoCmd = "SELECT * from Empleado";
+                    string textoCmd = "SELECT * from Empleado  e join Cargo c on e.Cargo_Actual_ID = c.ID_Cargo";
 
                     SqlCommand cmd = new SqlCommand(textoCmd, con);
                     DataTable datos = new DataTable();
@@ -246,7 +246,40 @@ namespace Clases
                 return null;
             }
         }
-       
+
+        public static Empleado ObtenerEmpleadosNroDocumento(string NroDocumento)
+        {
+            Empleado em = new Empleado();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
+                {
+                    con.Open();
+
+                    string textoCmd = "SELECT Nombres, Apellidos, Nro_Documento from Empleado  where Nro_Documento = @Nro_Documento";
+
+                    SqlCommand cmd = new SqlCommand(textoCmd, con);
+
+                    SqlParameter p1 = new SqlParameter("@Nro_Documento", NroDocumento);
+                    p1.SqlDbType = SqlDbType.Int;
+                    cmd.Parameters.Add(p1);
+
+                    SqlDataReader elLectorDeDatos = cmd.ExecuteReader();
+                    while (elLectorDeDatos.Read())
+                    {
+                        em.Nombres = elLectorDeDatos.GetString(0);
+                        em.Apellidos = elLectorDeDatos.GetString(1);
+                        em.NroDocumento = elLectorDeDatos.GetString(2);
+                    }
+                    return em;
+                }
+            }
+            catch (Exception ex2)
+            {
+                return null;
+            }
+        }
+
         public double GenerarVacaciones(Empleado emp, DateTime fechaIngreso)
         {
             double DiasVaciones = 0;
