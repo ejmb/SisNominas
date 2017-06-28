@@ -11,7 +11,7 @@ namespace SisNominas_Clases
     {
         public static string CadenaConexionBaseDatos = "Data Source = EDUARDO-PC\\SQLEXPRESS; Initial Catalog = Nomina_TP; User ID = sa; Password = Minerva911";
 
-        public bool ProbarConexion()
+        public static bool ProbarConexion()
         {
             try
             {

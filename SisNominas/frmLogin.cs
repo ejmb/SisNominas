@@ -19,10 +19,9 @@ namespace SisNominas
         {
             InitializeComponent();
 
-            ConexionBD cx = new ConexionBD();
-            if (cx.ProbarConexion())
+            if (ConexionBD.ProbarConexion())
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(2000);
                 frmSplash.CloseSplash();
             }
             else

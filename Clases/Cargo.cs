@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SisNominas_Clases;
 
 namespace Clases
 {
@@ -14,7 +15,7 @@ namespace Clases
         public string Descripcion { get; set; }
 
         public static List<Cargo> listaCargos = new List<Cargo>();
-
+        public static string discripcionCargo;
         public Cargo()
         {
         }
@@ -25,15 +26,17 @@ namespace Clases
             Descripcion = descripcion;
         }
 
+        public override string ToString()
+        {
+            return this.Descripcion;
+        }
+
         public static bool AgregarCargo(Cargo c)
         {
             try
             {
-                string datosConexion = "Data Source = M201-21; Initial Catalog = Nomina_TP; User ID=sa; Password = @lumno123";
-
-                using (SqlConnection con = new SqlConnection(datosConexion))
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
                 {
-                    //Paso 2 - Abrir la conexión
                     con.Open();
 
                     string textoCmd = @"insert into Cargo (Descripcion_Cargo) values (@Descripcion)";
@@ -58,7 +61,6 @@ namespace Clases
             }
             catch (Exception ex2)
             {
-                //Error
                 return false;
             }
         }
@@ -67,11 +69,8 @@ namespace Clases
         {
             try
             {
-                string datosConexion = "Data Source = M201-21; Initial Catalog = Nomina_TP; User ID=sa; Password = @lumno123";
-
-                using (SqlConnection con = new SqlConnection(datosConexion))
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
                 {
-                    //Paso 2 - Abrir la conexión
                     con.Open();
 
                     string textoCmd = @"Update Cargo set Descripcion_Cargo = @Descripcion
@@ -101,21 +100,17 @@ namespace Clases
             }
             catch (Exception ex2)
             {
-                //Error
                 return false;
             }
         }
 
-        public static List<Cargo> ObtenerCargos()
+        public static List<Cargo> ObtenerListaCargos()
         {
             Cargo cargo;
             try
             {
-                string datosConexion = "Data Source = M201-21; Initial Catalog = Nomina_TP; User ID=sa; Password = @lumno123";
-
-                using (SqlConnection con = new SqlConnection(datosConexion))
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
                 {
-                    //Paso 2 - Abrir la conexión
                     con.Open();
 
                     string textoCmd = "SELECT * from Cargo";
@@ -142,13 +137,65 @@ namespace Clases
             }
         }
 
+        public static DataTable ObtenerTableCargos()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
+                {
+                    con.Open();
+
+                    string textoCmd = "SELECT * from Cargo";
+
+                    SqlCommand cmd = new SqlCommand(textoCmd, con);
+                    DataTable datos = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(datos);
+
+                    return datos;
+                }
+            }
+            catch (Exception ex2)
+            {
+                return null;
+            }
+        }
+
+        public static string ObtenerDescripcionCargo(int id)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
+                {
+                    con.Open();
+
+                    string textoCmd = @"SELECT Descripcion_Cargo from Cargo where ID_Cargo = @ID_Cargo";
+
+                    SqlCommand cmd = new SqlCommand(textoCmd, con);
+
+                    SqlParameter p1 = new SqlParameter("@ID_Cargo", id);
+                    p1.SqlDbType = SqlDbType.Int;
+                    cmd.Parameters.Add(p1);
+
+                    SqlDataReader elLectorDeDatos = cmd.ExecuteReader();
+                    while (elLectorDeDatos.Read())
+                    {
+                        discripcionCargo = elLectorDeDatos.GetString(1);
+                    }
+                }
+                return discripcionCargo;
+            }
+            catch (Exception ex2)
+            {
+                return null;
+            }
+        }
+
         public static bool EliminarCargo(Cargo c)
         {
             try
             {
-                string datosConexion = "Data Source = M201-21; Initial Catalog = Nomina_TP; User ID=sa; Password = @lumno123";
-
-                using (SqlConnection con = new SqlConnection(datosConexion))
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
                 {
                     con.Open();
 
@@ -174,7 +221,6 @@ namespace Clases
             }
             catch (Exception ex2)
             {
-                //Error
                 return false;
             }
         }

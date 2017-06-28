@@ -15,6 +15,7 @@ namespace SisNominas
         public frmMenu()
         {
             InitializeComponent();
+            StartTimer();
         }
 
         private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,6 +76,24 @@ namespace SisNominas
         {
             frmAcerca ace = new frmAcerca();
             ace.ShowDialog();
+        }
+
+        private void liquidacionSalarialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartTimer()
+        {
+            Timer t = new Timer();
+            t.Interval = 600;
+            t.Tick += new EventHandler(t_Tick);
+            t.Enabled = true;
+        }
+
+        void t_Tick(object sender, EventArgs e)
+        {
+            lblReloj.Text = DateTime.Now.ToString();
         }
     }
 }

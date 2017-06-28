@@ -18,11 +18,6 @@ namespace SisNominas
             InitializeComponent();
         }
 
-        private void btnConsulta_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Cargo c = new Cargo();
@@ -31,6 +26,7 @@ namespace SisNominas
             {
                 MessageBox.Show("Se agrego satisfactoriamente", "Mantenimiento Cargos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
+                recargarDataGridView();
             }
             else
             {
@@ -46,16 +42,60 @@ namespace SisNominas
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Cargo c = new Cargo();
-            c.Descripcion = txtDescripcion.Text;
-            if (Cargo.EliminarCargo(c))
+            if (dgvCargos.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Se elimino satisfactoriamente", "Mantenimiento Cargos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Limpiar();
+                Cargo c = new Cargo();
+                c.Codigo = (int)dgvCargos.SelectedRows[0].Cells[0].Value;
+                c.Descripcion = dgvCargos.SelectedRows[0].Cells[1].Value.ToString();
+                if (Cargo.EliminarCargo(c))
+                {
+                    MessageBox.Show("Se elimino satisfactoriamente", "Mantenimiento Cargos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                    recargarDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un error durante el Proceso. Favor, verifique los datos ingresados y vuelva a intentarlo", "Mantenimiento Cargos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+        }
+
+        private void frmCargo_Load(object sender, EventArgs e)
+        {
+            recargarDataGridView();
+        }
+
+        private void dgvCargos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvCargos.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Ocurrio un error durante el Proceso. Favor, verifique los datos ingresados y vuelva a intentarlo", "Mantenimiento Cargos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDescripcion.Text = dgvCargos.SelectedRows[0].Cells[1].Value.ToString();
+            }
+        }
+
+        private void recargarDataGridView()
+        {
+            dgvCargos.DataSource = null;
+            dgvCargos.DataSource = Cargo.ObtenerTableCargos();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (dgvCargos.SelectedRows.Count > 0)
+            {
+                Cargo c = new Cargo();
+                c.Codigo = (int)dgvCargos.SelectedRows[0].Cells[0].Value;
+                c.Descripcion = txtDescripcion.Text;
+                if (Cargo.ModificarCargo(c))
+                {
+                    MessageBox.Show("Se Modifico satisfactoriamente", "Mantenimiento Cargos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                    recargarDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un error durante el Proceso. Favor, verifique los datos ingresados y vuelva a intentarlo", "Mantenimiento Cargos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

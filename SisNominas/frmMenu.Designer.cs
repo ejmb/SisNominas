@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargosAscensoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +41,9 @@
             this.horasExtraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diaLibreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.liquidacionSalarialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblReloj = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +52,7 @@
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoToolStripMenuItem,
+            this.informesToolStripMenuItem,
             this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -59,8 +63,8 @@
             // mantenimientoToolStripMenuItem
             // 
             this.mantenimientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.empleadosToolStripMenuItem,
             this.cargosToolStripMenuItem,
+            this.empleadosToolStripMenuItem,
             this.cargosAscensoToolStripMenuItem,
             this.parametrosToolStripMenuItem,
             this.marcacionToolStripMenuItem,
@@ -74,15 +78,6 @@
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
             // 
-            // empleadosToolStripMenuItem
-            // 
-            this.empleadosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
-            this.empleadosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.empleadosToolStripMenuItem.Text = "Empleados";
-            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
-            // 
             // cargosToolStripMenuItem
             // 
             this.cargosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
@@ -91,6 +86,15 @@
             this.cargosToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.cargosToolStripMenuItem.Text = "Cargos";
             this.cargosToolStripMenuItem.Click += new System.EventHandler(this.cargosToolStripMenuItem_Click);
+            // 
+            // empleadosToolStripMenuItem
+            // 
+            this.empleadosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
+            this.empleadosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.empleadosToolStripMenuItem.Text = "Empleados";
+            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
             // 
             // cargosAscensoToolStripMenuItem
             // 
@@ -164,6 +168,37 @@
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
+            // informesToolStripMenuItem
+            // 
+            this.informesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.liquidacionSalarialToolStripMenuItem});
+            this.informesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.informesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
+            this.informesToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.informesToolStripMenuItem.Text = "Informes";
+            // 
+            // liquidacionSalarialToolStripMenuItem
+            // 
+            this.liquidacionSalarialToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
+            this.liquidacionSalarialToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.liquidacionSalarialToolStripMenuItem.Name = "liquidacionSalarialToolStripMenuItem";
+            this.liquidacionSalarialToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.liquidacionSalarialToolStripMenuItem.Text = "Liquidacion Salarial";
+            this.liquidacionSalarialToolStripMenuItem.Click += new System.EventHandler(this.liquidacionSalarialToolStripMenuItem_Click);
+            // 
+            // lblReloj
+            // 
+            this.lblReloj.AutoSize = true;
+            this.lblReloj.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblReloj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReloj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
+            this.lblReloj.Location = new System.Drawing.Point(695, 24);
+            this.lblReloj.Name = "lblReloj";
+            this.lblReloj.Size = new System.Drawing.Size(46, 16);
+            this.lblReloj.TabIndex = 2;
+            this.lblReloj.Text = "--.--.--";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,6 +206,7 @@
             this.BackgroundImage = global::SisNominas.Properties.Resources.SisNominas_bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(741, 552);
+            this.Controls.Add(this.lblReloj);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.Control;
@@ -201,5 +237,8 @@
         private System.Windows.Forms.ToolStripMenuItem horasExtraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem diaLibreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem liquidacionSalarialToolStripMenuItem;
+        private System.Windows.Forms.Label lblReloj;
     }
 }
