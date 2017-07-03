@@ -40,9 +40,9 @@
             this.reposoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horasExtraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diaLibreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.liquidacionSalarialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblReloj = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -159,15 +159,6 @@
             this.diaLibreToolStripMenuItem.Text = "Dia Libre";
             this.diaLibreToolStripMenuItem.Click += new System.EventHandler(this.diaLibreToolStripMenuItem_Click);
             // 
-            // acercaDeToolStripMenuItem
-            // 
-            this.acercaDeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acercaDeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de";
-            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
-            // 
             // informesToolStripMenuItem
             // 
             this.informesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -187,15 +178,24 @@
             this.liquidacionSalarialToolStripMenuItem.Text = "Liquidacion Salarial";
             this.liquidacionSalarialToolStripMenuItem.Click += new System.EventHandler(this.liquidacionSalarialToolStripMenuItem_Click);
             // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acercaDeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            // 
             // lblReloj
             // 
             this.lblReloj.AutoSize = true;
             this.lblReloj.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblReloj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReloj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
-            this.lblReloj.Location = new System.Drawing.Point(695, 24);
+            this.lblReloj.Location = new System.Drawing.Point(687, 24);
             this.lblReloj.Name = "lblReloj";
-            this.lblReloj.Size = new System.Drawing.Size(46, 16);
+            this.lblReloj.Size = new System.Drawing.Size(54, 16);
             this.lblReloj.TabIndex = 2;
             this.lblReloj.Text = "--.--.--";
             // 

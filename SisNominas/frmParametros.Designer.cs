@@ -36,12 +36,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtVacaciones = new System.Windows.Forms.TextBox();
-            this.txtMinutos = new System.Windows.Forms.TextBox();
             this.dtpHorarioEntrada = new System.Windows.Forms.DateTimePicker();
             this.dtpHorarioSalida = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvParametros = new System.Windows.Forms.DataGridView();
+            this.nudVacaciones = new System.Windows.Forms.NumericUpDown();
+            this.nudMinutos = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvParametros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudVacaciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinutos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnModificar
@@ -50,12 +52,13 @@
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnModificar.Location = new System.Drawing.Point(189, 238);
+            this.btnModificar.Location = new System.Drawing.Point(191, 235);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 5;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -63,12 +66,13 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEliminar.Location = new System.Drawing.Point(270, 238);
+            this.btnEliminar.Location = new System.Drawing.Point(272, 235);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
@@ -76,12 +80,13 @@
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.Location = new System.Drawing.Point(108, 238);
+            this.btnAgregar.Location = new System.Drawing.Point(110, 235);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label2
             // 
@@ -119,20 +124,6 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Max. de Vacaciones";
             // 
-            // txtVacaciones
-            // 
-            this.txtVacaciones.Location = new System.Drawing.Point(358, 39);
-            this.txtVacaciones.Name = "txtVacaciones";
-            this.txtVacaciones.Size = new System.Drawing.Size(64, 20);
-            this.txtVacaciones.TabIndex = 3;
-            // 
-            // txtMinutos
-            // 
-            this.txtMinutos.Location = new System.Drawing.Point(358, 13);
-            this.txtMinutos.Name = "txtMinutos";
-            this.txtMinutos.Size = new System.Drawing.Size(64, 20);
-            this.txtMinutos.TabIndex = 2;
-            // 
             // dtpHorarioEntrada
             // 
             this.dtpHorarioEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
@@ -149,27 +140,42 @@
             this.dtpHorarioSalida.Size = new System.Drawing.Size(105, 20);
             this.dtpHorarioSalida.TabIndex = 1;
             // 
-            // dataGridView1
+            // dgvParametros
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 69);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(420, 150);
-            this.dataGridView1.TabIndex = 10;
+            this.dgvParametros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvParametros.Location = new System.Drawing.Point(15, 66);
+            this.dgvParametros.Name = "dgvParametros";
+            this.dgvParametros.Size = new System.Drawing.Size(420, 150);
+            this.dgvParametros.TabIndex = 10;
+            this.dgvParametros.SelectionChanged += new System.EventHandler(this.dgvParametros_SelectionChanged);
+            // 
+            // nudVacaciones
+            // 
+            this.nudVacaciones.Location = new System.Drawing.Point(361, 40);
+            this.nudVacaciones.Name = "nudVacaciones";
+            this.nudVacaciones.Size = new System.Drawing.Size(50, 20);
+            this.nudVacaciones.TabIndex = 11;
+            // 
+            // nudMinutos
+            // 
+            this.nudMinutos.Location = new System.Drawing.Point(361, 14);
+            this.nudMinutos.Name = "nudMinutos";
+            this.nudMinutos.Size = new System.Drawing.Size(50, 20);
+            this.nudMinutos.TabIndex = 11;
             // 
             // frmParametros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 273);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(447, 271);
+            this.Controls.Add(this.nudMinutos);
+            this.Controls.Add(this.nudVacaciones);
+            this.Controls.Add(this.dgvParametros);
             this.Controls.Add(this.dtpHorarioSalida);
             this.Controls.Add(this.dtpHorarioEntrada);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.txtMinutos);
-            this.Controls.Add(this.txtVacaciones);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -180,7 +186,10 @@
             this.Name = "frmParametros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Mantenimiento Parametros";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmParametros_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvParametros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudVacaciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,10 +204,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtVacaciones;
-        private System.Windows.Forms.TextBox txtMinutos;
         private System.Windows.Forms.DateTimePicker dtpHorarioEntrada;
         private System.Windows.Forms.DateTimePicker dtpHorarioSalida;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvParametros;
+        private System.Windows.Forms.NumericUpDown nudVacaciones;
+        private System.Windows.Forms.NumericUpDown nudMinutos;
     }
 }
