@@ -168,7 +168,7 @@
             // 
             // dtpFechaHoraMarcacion
             // 
-            this.dtpFechaHoraMarcacion.CustomFormat = "MMMMdd, yyyy  |  hh:mm";
+            this.dtpFechaHoraMarcacion.CustomFormat = "MMMMdd, yyyy  |  hh:mm:ss";
             this.dtpFechaHoraMarcacion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaHoraMarcacion.Location = new System.Drawing.Point(279, 28);
             this.dtpFechaHoraMarcacion.Name = "dtpFechaHoraMarcacion";

@@ -12,8 +12,8 @@ namespace Clases
     public class Parametros
     {
         public int Codigo { get; set; }
-        public DateTime HorarioEntrada { get; set; }
-        public DateTime HorarioSalida { get; set; }
+        public TimeSpan HorarioEntrada { get; set; }
+        public TimeSpan HorarioSalida { get; set; }
         public int MinutosTolerancia { get; set; }
         public int CantMaxDiasVacaciones { get; set; }
 
@@ -30,8 +30,8 @@ namespace Clases
 
                     SqlCommand cmd = new SqlCommand(textoCmd, con);
 
-                    SqlParameter p1 = new SqlParameter("@Entrada", p.HorarioEntrada.TimeOfDay);
-                    SqlParameter p2 = new SqlParameter("@Salida", p.HorarioSalida.TimeOfDay);
+                    SqlParameter p1 = new SqlParameter("@Entrada", p.HorarioEntrada);
+                    SqlParameter p2 = new SqlParameter("@Salida", p.HorarioSalida);
                     SqlParameter p3 = new SqlParameter("@Minutos", p.MinutosTolerancia);
                     SqlParameter p4 = new SqlParameter("@Dias", p.CantMaxDiasVacaciones);
 
@@ -80,8 +80,8 @@ namespace Clases
 
                     SqlCommand cmd = new SqlCommand(textoCmd, con);
 
-                    SqlParameter p1 = new SqlParameter("@Entrada", p.HorarioEntrada.TimeOfDay);
-                    SqlParameter p2 = new SqlParameter("@Salida", p.HorarioSalida.TimeOfDay);
+                    SqlParameter p1 = new SqlParameter("@Entrada", p.HorarioEntrada);
+                    SqlParameter p2 = new SqlParameter("@Salida", p.HorarioSalida);
                     SqlParameter p3 = new SqlParameter("@Minutos", p.MinutosTolerancia);
                     SqlParameter p4 = new SqlParameter("@Dias", p.CantMaxDiasVacaciones);
                     SqlParameter p5 = new SqlParameter("@ID_Parametro", p.Codigo);

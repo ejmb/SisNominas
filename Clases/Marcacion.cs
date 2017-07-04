@@ -23,32 +23,91 @@ namespace Clases
                 {
                     con.Open();
 
-                    string textoCmd = @"insert into Marcacion (Empleado_ID, Fecha_Hora)
+                    string textoCmd = "select Horario_Entrada, Minutos_Tolerancia from Parametros_Sistema";
+                    SqlCommand cmd = new SqlCommand(textoCmd, con);
+                    SqlDataReader elLectorDeDatos = cmd.ExecuteReader();
+
+                    TimeSpan entrada = new TimeSpan();
+                    int tolerancia = 0;
+                    while (elLectorDeDatos.Read())
+                    {
+                        entrada = elLectorDeDatos.GetTimeSpan(0);
+                        tolerancia = elLectorDeDatos.GetInt32(1);
+                    }
+
+                    elLectorDeDatos.Close();
+
+                    if (m.MarcacionEmpleado.TimeOfDay > entrada.Add(TimeSpan.FromMinutes(tolerancia)))
+                    {
+                        string textoCmd1 = @"insert into Marcacion (Empleado_ID, Fecha_Hora)
                                                                 values (@Empleado_ID, @FechaHora)";
 
-                    SqlCommand cmd = new SqlCommand(textoCmd, con);
+                        SqlCommand cmd1 = new SqlCommand(textoCmd1, con);
 
-                    SqlParameter p1 = new SqlParameter("@Empleado_ID", m.Empleado.Codigo);
-                    SqlParameter p2 = new SqlParameter("@FechaHora", m.MarcacionEmpleado);
-                    p1.SqlDbType = SqlDbType.Int;
-                    p2.SqlDbType = SqlDbType.DateTime;
+                        SqlParameter p1 = new SqlParameter("@Empleado_ID", m.Empleado.Codigo);
+                        SqlParameter p2 = new SqlParameter("@FechaHora", m.MarcacionEmpleado);
+                        p1.SqlDbType = SqlDbType.Int;
+                        p2.SqlDbType = SqlDbType.DateTime;
 
-                    cmd.Parameters.Add(p1);
-                    cmd.Parameters.Add(p2);
+                        cmd1.Parameters.Add(p1);
+                        cmd1.Parameters.Add(p2);
+
+                        TimeSpan diferencia = m.MarcacionEmpleado.TimeOfDay - entrada.Add(TimeSpan.FromMinutes(tolerancia));
+
+                        string textoCmd2 = @"insert into Llegada_Tardia (Empleado_ID, Horas_Minutos_Diferencia)
+                                                                values (@Empleado_ID, @Horas_Minutos_Diferencia)";
+
+                        SqlCommand cmd2 = new SqlCommand(textoCmd2, con);
+
+                        SqlParameter p3 = new SqlParameter("@Empleado_ID", m.Empleado.Codigo);
+                        SqlParameter p4 = new SqlParameter("@Horas_Minutos_Diferencia", diferencia);
+                        p3.SqlDbType = SqlDbType.Int;
+                        p4.SqlDbType = SqlDbType.Time;
+
+                        cmd2.Parameters.Add(p3);
+                        cmd2.Parameters.Add(p4);
+
+                        try
+                        {
+                            cmd1.ExecuteNonQuery();
+                            cmd2.ExecuteNonQuery();
+                            return true;
+                        }
+                        catch (SqlException sqle)
+                        {
+                            throw sqle;
+                            return false;
+                        }
+                    }
+
+                    string textoCmd3 = @"insert into Marcacion (Empleado_ID, Fecha_Hora)
+                                                                values (@Empleado_ID, @FechaHora)";
+
+                    SqlCommand cmd3 = new SqlCommand(textoCmd3, con);
+
+                    SqlParameter p5 = new SqlParameter("@Empleado_ID", m.Empleado.Codigo);
+                    SqlParameter p6 = new SqlParameter("@FechaHora", m.MarcacionEmpleado);
+                    p5.SqlDbType = SqlDbType.Int;
+                    p6.SqlDbType = SqlDbType.DateTime;
+
+                    cmd3.Parameters.Add(p5);
+                    cmd3.Parameters.Add(p6);
 
                     try
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd3.ExecuteNonQuery();
                         return true;
                     }
                     catch (SqlException sqle)
                     {
+                        throw sqle;
                         return false;
                     }
                 }
             }
             catch (Exception ex2)
             {
+                throw ex2;
                 return false;
             }
         }

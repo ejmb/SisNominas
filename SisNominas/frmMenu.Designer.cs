@@ -44,6 +44,7 @@
             this.liquidacionSalarialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblReloj = new System.Windows.Forms.Label();
+            this.llegadasTardiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,7 +163,8 @@
             // informesToolStripMenuItem
             // 
             this.informesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.liquidacionSalarialToolStripMenuItem});
+            this.liquidacionSalarialToolStripMenuItem,
+            this.llegadasTardiasToolStripMenuItem});
             this.informesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.informesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
@@ -198,6 +200,14 @@
             this.lblReloj.Size = new System.Drawing.Size(46, 16);
             this.lblReloj.TabIndex = 2;
             this.lblReloj.Text = "--.--.--";
+            // 
+            // llegadasTardiasToolStripMenuItem
+            // 
+            this.llegadasTardiasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
+            this.llegadasTardiasToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.llegadasTardiasToolStripMenuItem.Name = "llegadasTardiasToolStripMenuItem";
+            this.llegadasTardiasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.llegadasTardiasToolStripMenuItem.Text = "Llegadas Tardias";
             // 
             // frmMenu
             // 
@@ -240,5 +250,6 @@
         private System.Windows.Forms.ToolStripMenuItem informesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem liquidacionSalarialToolStripMenuItem;
         private System.Windows.Forms.Label lblReloj;
+        private System.Windows.Forms.ToolStripMenuItem llegadasTardiasToolStripMenuItem;
     }
 }

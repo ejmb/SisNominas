@@ -22,8 +22,8 @@ namespace SisNominas
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Parametros p = new Parametros();
-            p.HorarioEntrada = dtpHorarioEntrada.Value;
-            p.HorarioSalida = dtpHorarioSalida.Value;
+            p.HorarioEntrada = dtpHorarioEntrada.Value.TimeOfDay;
+            p.HorarioSalida = dtpHorarioSalida.Value.TimeOfDay;
             p.MinutosTolerancia = int.Parse(nudMinutos.Text);
             p.CantMaxDiasVacaciones = int.Parse(nudVacaciones.Text);
 
@@ -74,8 +74,8 @@ namespace SisNominas
         {
             Parametros p = new Parametros();
             p.Codigo = (int)dgvParametros.SelectedRows[0].Cells[0].Value;
-            p.HorarioEntrada = dtpHorarioEntrada.Value;
-            p.HorarioSalida = dtpHorarioSalida.Value;
+            p.HorarioEntrada = dtpHorarioEntrada.Value.TimeOfDay;
+            p.HorarioSalida = dtpHorarioSalida.Value.TimeOfDay;
             p.MinutosTolerancia = int.Parse(nudMinutos.Text);
             p.CantMaxDiasVacaciones = int.Parse(nudVacaciones.Text);
 
