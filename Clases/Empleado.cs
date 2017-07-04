@@ -280,10 +280,77 @@ namespace Clases
             }
         }
 
-        public double GenerarVacaciones(Empleado emp, DateTime fechaIngreso)
+        public static void GenerarVacaciones()
         {
-            double DiasVaciones = 0;
-            return DiasVaciones;
+            DateTime fechaActual = DateTime.Today;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
+                {
+                    con.Open();
+
+                    //Parametros
+                    string textoCmd = "select Cantidad_Maxima_Dias_Vacaciones from Parametros_Sistema";
+                    SqlCommand cmd = new SqlCommand(textoCmd, con);
+                    SqlDataReader elLectorDeDatos = cmd.ExecuteReader();
+
+                    int maxVacaciones = 0;
+                    while (elLectorDeDatos.Read())
+                    {
+                        maxVacaciones = elLectorDeDatos.GetInt32(0);
+                    }
+                    elLectorDeDatos.Close();
+
+                    //Empleado
+                    string textoCmd1 = "select ID_Empleado, Fecha_Ingreso, Dias_Vacaciones_Acumulados from Empleado";
+                    SqlCommand cmd1 = new SqlCommand(textoCmd1, con);
+                    SqlDataReader elLectorDeDatos1 = cmd1.ExecuteReader();
+
+                    while (elLectorDeDatos1.Read())
+                    {
+                        var codEmpleado = elLectorDeDatos1.GetInt32(0);
+                        var fechaIngreso = elLectorDeDatos1.GetDateTime(1).Date;
+                        var vacacionesAcumuladas = elLectorDeDatos1.GetInt32(2);
+
+                        var antiguedadMeses = fechaActual.Subtract(fechaIngreso).Days / (365.2425 / 12);
+                        var cont = 0;
+
+                        while (cont <= antiguedadMeses && antiguedadMeses <= maxVacaciones && vacacionesAcumuladas < antiguedadMeses)
+                        {
+                            string textoCmd2 = @"Update Empleado set Dias_Vacaciones_Acumulados = @Dias_Vacaciones_Acumulados
+                                                where ID_Empleado = @ID_Empleado";
+
+                            SqlCommand cmd2 = new SqlCommand(textoCmd2, con);
+
+                            SqlParameter p1 = new SqlParameter("@Dias_Vacaciones_Acumulados", vacacionesAcumuladas + 1);
+                            SqlParameter p2 = new SqlParameter("@ID_Empleado", codEmpleado);
+
+                            p1.SqlDbType = SqlDbType.Int;
+                            p2.SqlDbType = SqlDbType.Int;
+
+                            cmd2.Parameters.Add(p1);
+                            cmd2.Parameters.Add(p2);
+
+                            try
+                            {
+                                cmd2.ExecuteNonQuery();
+                               // return true;
+                            }
+                            catch (SqlException sqle)
+                            {
+                                throw sqle;
+                               // return false;
+                            }
+                            cont += 1;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex2)
+            {
+                throw ex2;
+                //return false;
+            }
         }
     }
 }

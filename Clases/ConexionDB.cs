@@ -9,7 +9,7 @@ namespace SisNominas_Clases
 {
     public class ConexionBD
     {
-        public static string CadenaConexionBaseDatos = "Data Source = EDUARDO-PC\\SQLEXPRESS; Initial Catalog = Nomina_TP; User ID = sa; Password = Minerva911";
+        public static string CadenaConexionBaseDatos = "Data Source = EDUARDO-PC\\SQLEXPRESS; Initial Catalog = Nomina_TP; User ID = sa; Password = Minerva911; MultipleActiveResultSets = True";
 
         public static bool ProbarConexion()
         {

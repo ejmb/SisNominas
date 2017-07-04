@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Clases;
 
 namespace SisNominas
 {
@@ -94,6 +95,11 @@ namespace SisNominas
         void t_Tick(object sender, EventArgs e)
         {
             lblReloj.Text = DateTime.Now.ToString();
+        }
+
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+            Empleado.GenerarVacaciones();
         }
     }
 }

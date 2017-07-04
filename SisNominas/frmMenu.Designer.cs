@@ -42,9 +42,9 @@
             this.diaLibreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.liquidacionSalarialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.llegadasTardiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblReloj = new System.Windows.Forms.Label();
-            this.llegadasTardiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -180,6 +180,14 @@
             this.liquidacionSalarialToolStripMenuItem.Text = "Liquidacion Salarial";
             this.liquidacionSalarialToolStripMenuItem.Click += new System.EventHandler(this.liquidacionSalarialToolStripMenuItem_Click);
             // 
+            // llegadasTardiasToolStripMenuItem
+            // 
+            this.llegadasTardiasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
+            this.llegadasTardiasToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.llegadasTardiasToolStripMenuItem.Name = "llegadasTardiasToolStripMenuItem";
+            this.llegadasTardiasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.llegadasTardiasToolStripMenuItem.Text = "Llegadas Tardias";
+            // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -201,14 +209,6 @@
             this.lblReloj.TabIndex = 2;
             this.lblReloj.Text = "--.--.--";
             // 
-            // llegadasTardiasToolStripMenuItem
-            // 
-            this.llegadasTardiasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
-            this.llegadasTardiasToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.llegadasTardiasToolStripMenuItem.Name = "llegadasTardiasToolStripMenuItem";
-            this.llegadasTardiasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.llegadasTardiasToolStripMenuItem.Text = "Llegadas Tardias";
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +226,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
