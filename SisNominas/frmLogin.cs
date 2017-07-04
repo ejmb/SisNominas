@@ -49,7 +49,7 @@ namespace SisNominas
             if (Usuario.Autenticar(txtUser.Text, txtPass.Text))
             {
                 this.Hide();
-                MessageBox.Show("Bienvenido " + txtUser.Text);
+                MessageBox.Show("Bienvenido " + txtUser.Text.ToUpper(), "LogIn", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmMenu menu = new frmMenu();
                 menu.ShowDialog();
                 this.Close();

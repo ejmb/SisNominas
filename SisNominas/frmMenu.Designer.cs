@@ -193,9 +193,9 @@
             this.lblReloj.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblReloj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReloj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
-            this.lblReloj.Location = new System.Drawing.Point(687, 24);
+            this.lblReloj.Location = new System.Drawing.Point(695, 24);
             this.lblReloj.Name = "lblReloj";
-            this.lblReloj.Size = new System.Drawing.Size(54, 16);
+            this.lblReloj.Size = new System.Drawing.Size(46, 16);
             this.lblReloj.TabIndex = 2;
             this.lblReloj.Text = "--.--.--";
             // 
