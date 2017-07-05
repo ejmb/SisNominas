@@ -128,5 +128,21 @@ namespace SisNominas
             dgvEmpleado.DataSource = null;
             dgvEmpleado.DataSource = Empleado.ObtenerTablaEmpleados();
         }
+
+        private void btnDesvincular_Click(object sender, EventArgs e)
+        {
+            Empleado em = new Empleado();
+            em.Codigo = (int)dgvEmpleado.SelectedRows[0].Cells[0].Value;
+            if (Empleado.DesvincularEmpleado(em))
+            {
+                MessageBox.Show("Empleado DESVINCULADO", "Mantenimiento Empleados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Limpiar();
+                recargarDataGridView();
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio un error durante el Proceso. Favor, verifique los datos ingresados y vuelva a intentarlo", "Mantenimiento Empleados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

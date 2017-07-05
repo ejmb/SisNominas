@@ -228,6 +228,47 @@ namespace Clases
             }
         }
 
+        public static bool DesvincularEmpleado(Empleado em)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConexionBD.CadenaConexionBaseDatos))
+                {
+                    con.Open();
+
+                    string textoCmd = @"Update Empleado set Estado = @Estado
+                                        where ID_Empleado = @ID_Empleado";
+
+                    SqlCommand cmd = new SqlCommand(textoCmd, con);
+
+                    SqlParameter p11 = new SqlParameter("@Estado", "INACTIVO");
+                    SqlParameter p13 = new SqlParameter("@ID_Empleado", em.Codigo);
+
+                    p11.SqlDbType = SqlDbType.VarChar;
+                    p13.SqlDbType = SqlDbType.Int;
+
+                    cmd.Parameters.Add(p11);
+                    cmd.Parameters.Add(p13);
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
+                    catch (SqlException sqle)
+                    {
+                        //throw sqle;
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex2)
+            {
+                //throw ex2;
+                return false;
+            }
+        }
+
         public static DataTable ObtenerTablaEmpleados()
         {
             try

@@ -52,12 +52,13 @@
             this.txtSalario = new System.Windows.Forms.TextBox();
             this.txtNroCelular = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.dgvEmpleado = new System.Windows.Forms.DataGridView();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnDesvincular = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
@@ -139,6 +140,7 @@
             // 
             // txtVacaciones
             // 
+            this.txtVacaciones.Enabled = false;
             this.txtVacaciones.Location = new System.Drawing.Point(166, 77);
             this.txtVacaciones.Name = "txtVacaciones";
             this.txtVacaciones.Size = new System.Drawing.Size(57, 20);
@@ -216,6 +218,7 @@
             // 
             // txtDiasAFavor
             // 
+            this.txtDiasAFavor.Enabled = false;
             this.txtDiasAFavor.Location = new System.Drawing.Point(166, 100);
             this.txtDiasAFavor.Name = "txtDiasAFavor";
             this.txtDiasAFavor.Size = new System.Drawing.Size(57, 20);
@@ -264,6 +267,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Personales";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Direccion";
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Location = new System.Drawing.Point(97, 71);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(190, 20);
+            this.txtDireccion.TabIndex = 2;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label7);
@@ -291,7 +310,7 @@
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.Location = new System.Drawing.Point(225, 367);
+            this.btnAgregar.Location = new System.Drawing.Point(203, 370);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 12;
@@ -305,7 +324,7 @@
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnModificar.Location = new System.Drawing.Point(331, 367);
+            this.btnModificar.Location = new System.Drawing.Point(284, 370);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 13;
@@ -322,21 +341,19 @@
             this.dgvEmpleado.TabIndex = 15;
             this.dgvEmpleado.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // txtDireccion
+            // btnDesvincular
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(97, 71);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(190, 20);
-            this.txtDireccion.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Direccion";
+            this.btnDesvincular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(13)))), ((int)(((byte)(54)))));
+            this.btnDesvincular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesvincular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesvincular.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnDesvincular.Location = new System.Drawing.Point(365, 370);
+            this.btnDesvincular.Name = "btnDesvincular";
+            this.btnDesvincular.Size = new System.Drawing.Size(97, 23);
+            this.btnDesvincular.TabIndex = 13;
+            this.btnDesvincular.Text = "Desvincular";
+            this.btnDesvincular.UseVisualStyleBackColor = false;
+            this.btnDesvincular.Click += new System.EventHandler(this.btnDesvincular_Click);
             // 
             // frmEmpleado
             // 
@@ -344,6 +361,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 416);
             this.Controls.Add(this.dgvEmpleado);
+            this.Controls.Add(this.btnDesvincular);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.groupBox2);
@@ -394,5 +412,6 @@
         private System.Windows.Forms.DataGridView dgvEmpleado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.Button btnDesvincular;
     }
 }

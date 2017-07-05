@@ -254,11 +254,11 @@ INSERT INTO Cargo (Descripcion_Cargo) VALUES ('Gerente');
 INSERT INTO Cargo (Descripcion_Cargo) VALUES ('Vendedor');
 
 INSERT INTO Empleado (Nombres, Apellidos, Direccion, Nro_Documento, Tipo_Documento, Nro_Celular, Fecha_Ingreso, Cargo_Actual_ID, Estado, Salario_Base_Actual) 
-				VALUES ('Eduardo', 'Morel', 'Buenos Aires 271', '2695031', 'CI', '0961123123', '08/26/2010', 2, 'ACTIVO', 4500000);
+				VALUES ('Eduardo', 'Morel', 'Buenos Aires 271', '2695031', 'CI', '0961123123', '08/01/2010', 2, 'ACTIVO', 4500000);
 INSERT INTO Empleado (Nombres, Apellidos, Direccion, Nro_Documento, Tipo_Documento, Nro_Celular, Fecha_Ingreso, Cargo_Actual_ID, Estado, Salario_Base_Actual) 
 				VALUES ('Fabiana', 'Yambay', 'Miraflores 271', '4016677', 'DNI', '0981111222', '01/01/2015', 3, 'ACTIVO', 6500000);
 INSERT INTO Empleado (Nombres, Apellidos, Direccion, Nro_Documento, Tipo_Documento, Nro_Celular, Fecha_Ingreso, Cargo_Actual_ID, Estado, Salario_Base_Actual) 
-				VALUES ('Jose', 'Baez', '14 de Mayo 271', '2695032', 'PASAPORTE', '0971666999', '12/15/2016', 1, 'ACTIVO', 5000000);
+				VALUES ('Jose', 'Baez', '14 de Mayo 271', '2695032', 'PASAPORTE', '0971666999', '12/01/2016', 1, 'ACTIVO', 5000000);
 
 INSERT INTO Parametros_Sistema (Horario_Entrada, Horario_Salida, Minutos_Tolerancia, Cantidad_Maxima_Dias_Vacaciones) VALUES ('07:00:00', '17:00:00', 10, 24);
 
