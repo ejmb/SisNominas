@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using SisNominas_Clases;
 
 namespace Clases
@@ -247,7 +252,7 @@ namespace Clases
             }
         }
 
-        public static Empleado ObtenerEmpleadosNroDocumento(string NroDocumento)
+        public static Empleado ObtenerEmpleadosNroDocumento(int idEmpleado)
         {
             Empleado em = new Empleado();
             try
@@ -256,20 +261,21 @@ namespace Clases
                 {
                     con.Open();
 
-                    string textoCmd = "SELECT Nombres, Apellidos, Nro_Documento from Empleado  where Nro_Documento = @Nro_Documento";
+                    string textoCmd = "SELECT ID_Empleado, Nombres, Apellidos, Nro_Documento from Empleado  where ID_Empleado = @ID_Empleado";
 
                     SqlCommand cmd = new SqlCommand(textoCmd, con);
 
-                    SqlParameter p1 = new SqlParameter("@Nro_Documento", NroDocumento);
+                    SqlParameter p1 = new SqlParameter("@ID_Empleado", idEmpleado);
                     p1.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(p1);
 
                     SqlDataReader elLectorDeDatos = cmd.ExecuteReader();
                     while (elLectorDeDatos.Read())
                     {
-                        em.Nombres = elLectorDeDatos.GetString(0);
-                        em.Apellidos = elLectorDeDatos.GetString(1);
-                        em.NroDocumento = elLectorDeDatos.GetString(2);
+                        em.Codigo = elLectorDeDatos.GetInt32(0);
+                        em.Nombres = elLectorDeDatos.GetString(1);
+                        em.Apellidos = elLectorDeDatos.GetString(2);
+                        em.NroDocumento = elLectorDeDatos.GetString(3);
                     }
                     return em;
                 }
@@ -351,6 +357,164 @@ namespace Clases
                 throw ex2;
                 //return false;
             }
+        }
+
+        public static void GenerarPDF()
+        {
+            System.IO.Directory.CreateDirectory(@"C:\PDF");
+
+            // Creamos el documento con el tamaño de página tradicional
+            Document doc = new Document(PageSize.A4);
+            // Indicamos donde vamos a guardar el documento
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\PDF\LIQUIDACION_SALARIAL_" + DateTime.Today.Month +"_"+ DateTime.Today.Year +".pdf", FileMode.Create, FileAccess.ReadWrite));
+
+            // Le colocamos el título y el autor
+            // **Nota: Esto no será visible en el documento
+            doc.AddTitle("Liquidacion Salarial");
+            // Abrimos el archivo
+            doc.Open();
+
+            // Creamos el tipo de Font que vamos utilizar
+            iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            // Escribimos el encabezamiento en el documento
+            doc.Add(new Paragraph("Liquidacion Salarial "+DateTime.Today.ToString("MMMM", CultureInfo.InvariantCulture)));
+            doc.Add(Chunk.NEWLINE);
+
+            // Creamos una tabla que contendrá el nombre, apellido y país
+            // de nuestros visitante.
+            PdfPTable tblEmpleado = new PdfPTable(5);
+            tblEmpleado.WidthPercentage = 100;
+
+           // Configuramos el título de las columnas de la tabla
+            PdfPCell clCodigo = new PdfPCell(new Phrase("Codigo", _standardFont));
+            clCodigo.BackgroundColor = new BaseColor(159, 159, 159);
+            //clCodigo.BorderWidth = 0;
+            //clCodigo.BorderWidthBottom = 0.75f;
+
+            PdfPCell clNroDocumento = new PdfPCell(new Phrase("Nro. Documento", _standardFont));
+            clNroDocumento.BackgroundColor = new BaseColor(159, 159, 159);
+            //clNroDocumento.BorderWidth = 0;
+            //clNroDocumento.BorderWidthBottom = 0.75f;
+
+            PdfPCell clSalarioBruto = new PdfPCell(new Phrase("Salario Bruto", _standardFont));
+            clSalarioBruto.BackgroundColor = new BaseColor(159, 159, 159);
+            //clSalarioBruto.BorderWidth = 0;
+            //clSalarioBruto.BorderWidthBottom = 0.75f;
+            clSalarioBruto.HorizontalAlignment = 1;
+
+            PdfPCell clDescuentoIps = new PdfPCell(new Phrase("Descuento IPS (9%)", _standardFont));
+            clDescuentoIps.BackgroundColor = new BaseColor(159, 159, 159);
+            //clDescuentoIps.BorderWidth = 0;
+            //clDescuentoIps.BorderWidthBottom = 0.75f;
+            clDescuentoIps.HorizontalAlignment = 1;
+
+            PdfPCell clSalarioNeto = new PdfPCell(new Phrase("Salario Neto", _standardFont));
+            clSalarioNeto.BackgroundColor = new BaseColor(159, 159, 159);
+            //clSalarioNeto.BorderWidth = 0;
+            //clSalarioNeto.BorderWidthBottom = 0.75f;
+            clSalarioNeto.HorizontalAlignment = 1;
+
+            // Añadimos las celdas a la tabla.
+            //tblEmpleado.AddCell(titEmpleado);
+            tblEmpleado.AddCell(clCodigo);
+            tblEmpleado.AddCell(clNroDocumento);
+            tblEmpleado.AddCell(clSalarioBruto);
+            tblEmpleado.AddCell(clDescuentoIps);
+            tblEmpleado.AddCell(clSalarioNeto);
+
+            // Llenamos la tabla con información
+            int totalSalarioBase = 0;
+            int totalDescuento = 0;
+            int totalSalarioNeto = 0;
+            DataTable dt = ObtenerTablaEmpleados();
+            foreach (DataRow row in dt.Rows)
+            {
+                PdfPCell clCodigo1 = new PdfPCell(new Phrase(Convert.ToString(row["ID_Empleado"]), _standardFont));
+                clCodigo1.BorderWidth = 0;
+                //clCodigo1.BorderWidthBottom = 0.75f;
+
+                PdfPCell clNroDocumento1 = new PdfPCell(new Phrase(Convert.ToString(row["Nro_Documento"]), _standardFont));
+                clNroDocumento1.BorderWidth = 0;
+                //clNroDocumento1.BorderWidthBottom = 0.75f;
+
+                PdfPCell clSalarioBruto1 = new PdfPCell(new Phrase(Convert.ToString(row["Salario_Base_Actual"]), _standardFont));
+                clSalarioBruto1.BorderWidth = 0;
+                clSalarioBruto1.HorizontalAlignment = 2;
+                //clSalarioBruto1.BorderWidthBottom = 0.75f;
+
+                int salarioBase = (int)row["Salario_Base_Actual"];
+                int descuento = (salarioBase * 9)/100;
+                int salarioNeto = salarioBase - descuento;
+
+                totalSalarioBase = totalSalarioBase + salarioBase;
+                totalDescuento = totalDescuento + descuento;
+                totalSalarioNeto = totalSalarioNeto + salarioNeto;
+
+                PdfPCell clDescuentoIps1 = new PdfPCell(new Phrase(Convert.ToString(descuento), _standardFont));
+                clDescuentoIps1.BorderWidth = 0;
+                clDescuentoIps1.HorizontalAlignment = 2;
+                //clDescuentoIps1.BorderWidthBottom = 0.75f;
+
+                PdfPCell clSalarioNeto1 = new PdfPCell(new Phrase(Convert.ToString(salarioNeto), _standardFont));
+                clSalarioNeto1.BorderWidth = 0;
+                clSalarioNeto1.HorizontalAlignment = 2;
+                //clSalarioNeto1.BorderWidthBottom = 0.75f;
+
+                // Añadimos las celdas a la tabla.
+                //tblEmpleado.AddCell(titEmpleado);
+                tblEmpleado.AddCell(clCodigo1);
+                tblEmpleado.AddCell(clNroDocumento1);
+                tblEmpleado.AddCell(clSalarioBruto1);
+                tblEmpleado.AddCell(clDescuentoIps1);
+                tblEmpleado.AddCell(clSalarioNeto1);
+            }
+
+            //PdfPCell clCodigo2 = new PdfPCell(new Phrase("", _standardFont));
+            //clCodigo.BorderWidth = 0;
+            //clCodigo.BorderWidthBottom = 0.75f;
+
+            //PdfPCell clNroDocumento2 = new PdfPCell(new Phrase("", _standardFont));
+            //clNroDocumento.BorderWidth = 0;
+            //clNroDocumento.BorderWidthBottom = 0.75f;
+
+            PdfPCell clCodigo2 = new PdfPCell(new Phrase("TOTALES", _standardFont));
+            //clCodigo2.BorderWidth = 0;
+            //clCodigo2.BorderWidthBottom = 0.75f;
+            clCodigo2.Colspan = 2;
+            clCodigo2.HorizontalAlignment = 1;
+            clCodigo2.BackgroundColor = new BaseColor(159, 159, 159);
+
+            PdfPCell clSalarioBruto2 = new PdfPCell(new Phrase(Convert.ToString(totalSalarioBase), _standardFont));
+            clSalarioBruto2.HorizontalAlignment = 2;
+            //clSalarioBruto2.BorderWidth = 0;
+            //clSalarioBruto2.BorderWidthBottom = 0.75f;
+
+            PdfPCell clDescuentoIps2 = new PdfPCell(new Phrase(Convert.ToString(totalDescuento), _standardFont));
+            clDescuentoIps2.HorizontalAlignment = 2;
+            //clDescuentoIps2.BorderWidth = 0;
+            //clDescuentoIps2.BorderWidthBottom = 0.75f;
+
+            PdfPCell clSalarioNeto2 = new PdfPCell(new Phrase(Convert.ToString(totalSalarioNeto), _standardFont));
+            clSalarioNeto2.HorizontalAlignment = 2;
+            //clSalarioNeto2.BorderWidth = 0;
+            //clSalarioNeto2.BorderWidthBottom = 0.75f;
+
+            // Añadimos las celdas a la tabla.
+            //tblEmpleado.AddCell(titEmpleado);
+            tblEmpleado.AddCell(clCodigo2);
+            //tblEmpleado.AddCell(clNroDocumento2);
+            tblEmpleado.AddCell(clSalarioBruto2);
+            tblEmpleado.AddCell(clDescuentoIps2);
+            tblEmpleado.AddCell(clSalarioNeto2);
+
+            // Finalmente, añadimos la tabla al documento PDF y cerramos el documento
+            doc.Add(tblEmpleado);
+
+            doc.Close();
+            writer.Close();
+
+            System.Diagnostics.Process.Start(@"C:\PDF\LIQUIDACION_SALARIAL_" + DateTime.Today.Month + "_" + DateTime.Today.Year + ".pdf");
         }
     }
 }

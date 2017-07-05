@@ -49,12 +49,6 @@ namespace SisNominas
             marca.ShowDialog();
         }
 
-        private void llegadaTardiaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLlegadaTardia lleg = new frmLlegadaTardia();
-            lleg.ShowDialog();
-        }
-
         private void reposoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReposo rep = new frmReposo();
@@ -81,7 +75,7 @@ namespace SisNominas
 
         private void liquidacionSalarialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Empleado.GenerarPDF();
         }
 
         private void StartTimer()
@@ -99,7 +93,13 @@ namespace SisNominas
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-            Empleado.GenerarVacaciones();
+            //Empleado.GenerarVacaciones();
+        }
+
+        private void llegadasTardiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLlegadaTardia lleg = new frmLlegadaTardia();
+            lleg.ShowDialog();
         }
     }
 }

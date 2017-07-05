@@ -36,7 +36,6 @@
             this.cargosAscensoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.llegadaTardiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reposoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horasExtraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diaLibreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +68,6 @@
             this.cargosAscensoToolStripMenuItem,
             this.parametrosToolStripMenuItem,
             this.marcacionToolStripMenuItem,
-            this.llegadaTardiaToolStripMenuItem,
             this.reposoToolStripMenuItem,
             this.horasExtraToolStripMenuItem,
             this.diaLibreToolStripMenuItem});
@@ -123,15 +121,6 @@
             this.marcacionToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.marcacionToolStripMenuItem.Text = "Marcacion";
             this.marcacionToolStripMenuItem.Click += new System.EventHandler(this.marcacionToolStripMenuItem_Click);
-            // 
-            // llegadaTardiaToolStripMenuItem
-            // 
-            this.llegadaTardiaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(114)))), ((int)(((byte)(186)))));
-            this.llegadaTardiaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.llegadaTardiaToolStripMenuItem.Name = "llegadaTardiaToolStripMenuItem";
-            this.llegadaTardiaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.llegadaTardiaToolStripMenuItem.Text = "Llegada Tardia";
-            this.llegadaTardiaToolStripMenuItem.Click += new System.EventHandler(this.llegadaTardiaToolStripMenuItem_Click);
             // 
             // reposoToolStripMenuItem
             // 
@@ -187,6 +176,7 @@
             this.llegadasTardiasToolStripMenuItem.Name = "llegadasTardiasToolStripMenuItem";
             this.llegadasTardiasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.llegadasTardiasToolStripMenuItem.Text = "Llegadas Tardias";
+            this.llegadasTardiasToolStripMenuItem.Click += new System.EventHandler(this.llegadasTardiasToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -243,7 +233,6 @@
         private System.Windows.Forms.ToolStripMenuItem cargosAscensoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parametrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcacionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem llegadaTardiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reposoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horasExtraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem diaLibreToolStripMenuItem;
