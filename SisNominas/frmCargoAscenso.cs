@@ -34,6 +34,9 @@ namespace SisNominas
         {
             dgvEmpleados.DataSource = null;
             dgvEmpleados.DataSource = Empleado.ObtenerTablaEmpleados();
+
+            dgvHistorico.DataSource = null;
+            dgvHistorico.DataSource = CargoAscenso.ObtenerTablaCargoAscenso();
         }
 
         private void dgvEmpleados_SelectionChanged(object sender, EventArgs e)

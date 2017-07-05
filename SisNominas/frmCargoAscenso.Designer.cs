@@ -33,11 +33,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtSalarioEntrante = new System.Windows.Forms.TextBox();
+            this.txtNroDocumento = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNombres = new System.Windows.Forms.TextBox();
+            this.txtSalarioEntrante = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpFechaCambio = new System.Windows.Forms.DateTimePicker();
@@ -45,9 +46,14 @@
             this.cboCargoEntrante = new System.Windows.Forms.ComboBox();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtNroDocumento = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvHistorico = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistorico)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAgregar
@@ -56,7 +62,7 @@
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.Location = new System.Drawing.Point(212, 301);
+            this.btnAgregar.Location = new System.Drawing.Point(205, 464);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 7;
@@ -97,12 +103,12 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Nro. Documento";
             // 
-            // txtSalarioEntrante
+            // txtNroDocumento
             // 
-            this.txtSalarioEntrante.Location = new System.Drawing.Point(362, 90);
-            this.txtSalarioEntrante.Name = "txtSalarioEntrante";
-            this.txtSalarioEntrante.Size = new System.Drawing.Size(123, 20);
-            this.txtSalarioEntrante.TabIndex = 3;
+            this.txtNroDocumento.Location = new System.Drawing.Point(104, 78);
+            this.txtNroDocumento.Name = "txtNroDocumento";
+            this.txtNroDocumento.Size = new System.Drawing.Size(137, 20);
+            this.txtNroDocumento.TabIndex = 3;
             // 
             // label4
             // 
@@ -135,6 +141,13 @@
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(154, 20);
             this.txtNombres.TabIndex = 1;
+            // 
+            // txtSalarioEntrante
+            // 
+            this.txtSalarioEntrante.Location = new System.Drawing.Point(362, 90);
+            this.txtSalarioEntrante.Name = "txtSalarioEntrante";
+            this.txtSalarioEntrante.Size = new System.Drawing.Size(123, 20);
+            this.txtSalarioEntrante.TabIndex = 3;
             // 
             // label2
             // 
@@ -181,9 +194,9 @@
             // dgvEmpleados
             // 
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleados.Location = new System.Drawing.Point(13, 131);
+            this.dgvEmpleados.Location = new System.Drawing.Point(6, 19);
             this.dgvEmpleados.Name = "dgvEmpleados";
-            this.dgvEmpleados.Size = new System.Drawing.Size(473, 150);
+            this.dgvEmpleados.Size = new System.Drawing.Size(460, 139);
             this.dgvEmpleados.TabIndex = 8;
             this.dgvEmpleados.SelectionChanged += new System.EventHandler(this.dgvEmpleados_SelectionChanged);
             // 
@@ -196,19 +209,42 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "Salario Entrante";
             // 
-            // txtNroDocumento
+            // groupBox2
             // 
-            this.txtNroDocumento.Location = new System.Drawing.Point(104, 78);
-            this.txtNroDocumento.Name = "txtNroDocumento";
-            this.txtNroDocumento.Size = new System.Drawing.Size(137, 20);
-            this.txtNroDocumento.TabIndex = 3;
+            this.groupBox2.Controls.Add(this.dgvEmpleados);
+            this.groupBox2.Location = new System.Drawing.Point(13, 131);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(472, 164);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Empleados";
+            // 
+            // dgvHistorico
+            // 
+            this.dgvHistorico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHistorico.Location = new System.Drawing.Point(7, 17);
+            this.dgvHistorico.Name = "dgvHistorico";
+            this.dgvHistorico.Size = new System.Drawing.Size(459, 133);
+            this.dgvHistorico.TabIndex = 8;
+            this.dgvHistorico.SelectionChanged += new System.EventHandler(this.dgvEmpleados_SelectionChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dgvHistorico);
+            this.groupBox3.Location = new System.Drawing.Point(13, 302);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(473, 156);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Historico Cargo/Ascenso";
             // 
             // frmCargoAscenso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 336);
-            this.Controls.Add(this.dgvEmpleados);
+            this.ClientSize = new System.Drawing.Size(498, 496);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtSalarioEntrante);
             this.Controls.Add(this.cboCargoEntrante);
             this.Controls.Add(this.cboCargoSaliente);
@@ -229,6 +265,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistorico)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +291,8 @@
         private System.Windows.Forms.DataGridView dgvEmpleados;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtNroDocumento;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dgvHistorico;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

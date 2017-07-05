@@ -63,6 +63,16 @@ namespace SisNominas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bg_timesheet {
+            get {
+                object obj = ResourceManager.GetObject("bg_timesheet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clockIcon {
             get {
                 object obj = ResourceManager.GetObject("clockIcon", resourceCulture);

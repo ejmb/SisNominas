@@ -203,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SisNominas.Properties.Resources.SisNominas_bg;
+            this.BackgroundImage = global::SisNominas.Properties.Resources.bg_timesheet;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(741, 552);
             this.Controls.Add(this.lblReloj);

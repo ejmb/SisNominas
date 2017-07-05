@@ -105,8 +105,7 @@ namespace Clases
                 {
                     con.Open();
 
-                    string textoCmd = @"SELECT hce.ID_Historico, hce.Fecha_Cambio, e.Nombres, 
-		                                        e.Apellidos, e.Nro_Documento,c.Descripcion_Cargo, ca.Descripcion_Cargo
+                    string textoCmd = @"SELECT hce.Fecha_Cambio, e.Nro_Documento, c.Descripcion_Cargo as CargoAnterior, ca.Descripcion_Cargo as CargoActual, hce.Nuevo_Salario
                                         from Historico_Cargo_Empleado hce join Empleado e on hce.Empleado_ID = e.ID_Empleado
 									                                        join Cargo c on hce.Cargo_Anterior_ID = c.ID_Cargo 
 									                                        join Cargo ca on hce.Cargo_Nuevo_ID = ca.ID_Cargo";

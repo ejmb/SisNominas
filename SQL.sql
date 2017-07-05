@@ -244,3 +244,33 @@ REFERENCES [dbo].[Empleado] ([ID_Empleado])
 GO
 ALTER TABLE [dbo].[Reposo] CHECK CONSTRAINT [FK_Reposo_Empleado]
 GO
+
+INSERT INTO Usuario (Usuario, Clave) VALUES ('emorel', 'emorel');
+INSERT INTO Usuario (Usuario, Clave) VALUES ('admin', 'admin');
+
+INSERT INTO Cargo (Descripcion_Cargo) VALUES ('Analista');
+INSERT INTO Cargo (Descripcion_Cargo) VALUES ('Programador');
+INSERT INTO Cargo (Descripcion_Cargo) VALUES ('Gerente');
+INSERT INTO Cargo (Descripcion_Cargo) VALUES ('Vendedor');
+
+INSERT INTO Empleado (Nombres, Apellidos, Direccion, Nro_Documento, Tipo_Documento, Nro_Celular, Fecha_Ingreso, Cargo_Actual_ID, Estado, Salario_Base_Actual) 
+				VALUES ('Eduardo', 'Morel', 'Buenos Aires 271', '2695031', 'CI', '0961123123', '08/26/2010', 2, 'ACTIVO', 4500000);
+INSERT INTO Empleado (Nombres, Apellidos, Direccion, Nro_Documento, Tipo_Documento, Nro_Celular, Fecha_Ingreso, Cargo_Actual_ID, Estado, Salario_Base_Actual) 
+				VALUES ('Fabiana', 'Yambay', 'Miraflores 271', '4016677', 'DNI', '0981111222', '01/01/2015', 3, 'ACTIVO', 6500000);
+INSERT INTO Empleado (Nombres, Apellidos, Direccion, Nro_Documento, Tipo_Documento, Nro_Celular, Fecha_Ingreso, Cargo_Actual_ID, Estado, Salario_Base_Actual) 
+				VALUES ('Jose', 'Baez', '14 de Mayo 271', '2695032', 'PASAPORTE', '0971666999', '12/15/2016', 1, 'ACTIVO', 5000000);
+
+INSERT INTO Parametros_Sistema (Horario_Entrada, Horario_Salida, Minutos_Tolerancia, Cantidad_Maxima_Dias_Vacaciones) VALUES ('07:00:00', '17:00:00', 10, 24);
+
+INSERT INTO Marcacion (Empleado_ID, Fecha_Hora) VALUES (1, '07/02/2017 07:10:00');
+INSERT INTO Marcacion (Empleado_ID, Fecha_Hora) VALUES (1, '07/05/2017 06:55:00');
+INSERT INTO Marcacion (Empleado_ID, Fecha_Hora) VALUES (2, '07/02/2017 07:09:59');
+INSERT INTO Marcacion (Empleado_ID, Fecha_Hora) VALUES (2, '07/04/2017 07:01:00');
+INSERT INTO Marcacion (Empleado_ID, Fecha_Hora) VALUES (2, '07/05/2017 06:59:00');
+
+INSERT INTO Reposo (Empleado_ID, Motivo, Fecha_Desde, Cantidad_Dias) VALUES (1, 'Enfermedad', '07/05/2017', 2);
+INSERT INTO Reposo (Empleado_ID, Motivo, Fecha_Desde, Cantidad_Dias) VALUES (1, 'Dolor de Cabeza (?)', '07/01/2017', 1);
+INSERT INTO Reposo (Empleado_ID, Motivo, Fecha_Desde, Cantidad_Dias) VALUES (2, 'Gripe', '01/01/2017', 2);
+INSERT INTO Reposo (Empleado_ID, Motivo, Fecha_Desde, Cantidad_Dias) VALUES (3, 'Internacion', '07/05/2017', 2);
+
+--DROP DATABASE Nomina_TP;
